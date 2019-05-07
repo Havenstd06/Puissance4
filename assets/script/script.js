@@ -8,3 +8,17 @@ var plateau = [];
 for (var i = 0; i < lignes.length; i++) {
 	plateau[i];
 }
+function newGame(){
+	for (var i = 0; i < lignes.length; i++) {
+		lignes[i];
+		for (var j = 0; i < colonnes.length; j++) {
+			colonnes[j];
+			plateau[i][j] = 0 ;
+		}
+	}
+	numerojoueur = 1;
+	afficheTextAnnonce("Le jeu commence , c'est au tour du joueur")+nomDuJoueur(joueur);
+	jeu = true;
+	creerTableau();
+}
+
