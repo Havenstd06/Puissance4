@@ -19,7 +19,7 @@ function newGame(){
 	jeu = true;
 	creerTableau();
 }
-afficheTextAnnonce(){
-
+function afficheTextAnnonce(text){
+	document.GetElementById('textannonce').innerHTML;
 }
 
