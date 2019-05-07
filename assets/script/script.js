@@ -10,9 +10,7 @@ for (var i = 0; i < lignes.length; i++) {
 }
 function newGame(){
 	for (var i = 0; i < lignes.length; i++) {
-		lignes[i];
 		for (var j = 0; i < colonnes.length; j++) {
-			colonnes[j];
 			plateau[i][j] = 0 ;
 		}
 	}
@@ -20,5 +18,8 @@ function newGame(){
 	afficheTextAnnonce("Le jeu commence , c'est au tour du joueur")+nomDuJoueur(joueur);
 	jeu = true;
 	creerTableau();
+}
+afficheTextAnnonce(){
+
 }
 
