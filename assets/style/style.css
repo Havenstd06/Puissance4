@@ -1,3 +1,25 @@
 body{
-	
+
+}
+td{
+	background-color: #168655;
+	width: 75px;
+	height: 75px;
+	position: relative;
+	margin: 5px;
+	text-align: center;
+}
+.joueur1{
+	border-radius: 50px;
+	width: 55px;
+	height: 55px;
+	display: inline-block;
+	background-color: red;
+}
+.joueur2{
+	border-radius: 50px;
+	width: 55px;
+	height: 55px;
+	display: inline-block;
+	background-color: blue;
 }
