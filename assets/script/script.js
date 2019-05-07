@@ -5,22 +5,23 @@ var jeu = true;
 var text = "";
 var plateau = [];
 
-for (var i = 0; i < lignes.length; i++) {
-	plateau[i];
+for (var i = 0; i < lignes; i++) {
+	plateau[i] = [];
 }
+newGame();
 function newGame(){
-	for (var i = 0; i < lignes.length; i++) {
-		for (var j = 0; i < colonnes.length; j++) {
+	for (var i = 0; i < lignes; i++) {
+		for (var j = 0; i < colonnes; j++) {
 			plateau[i][j] = 0 ;
 		}
 	}
 	numerojoueur = 1;
-	afficheTextAnnonce("Le jeu commence , c'est au tour du joueur")+nomDuJoueur(joueur);
+	afficheTextAnnonce("Le jeu commence , c'est au tour du joueur ")+ nomDuJoueur(joueur);
 	jeu = true;
 	creerTableau();
 }
 function afficheTextAnnonce(text){
-	document.getElementById('textannonce').innerHTML;
+	document.getElementById('textannonce').innerHTML = text;
 }
 function nomDuJoueur(numerojoueur){
 	if (numerojoueur == 1) {
@@ -30,24 +31,22 @@ function nomDuJoueur(numerojoueur){
 	}
 }
 function creerTableau(){
-	text ="<table>".innerHTML;
-	for (var i = 0; i < lignes.length; i++) {
-		text = "<tr>".innerHTML;
-		for (var j = 0; j < colonnes.length; j++) {
-			text = "<td id='[i]-[j]' onclick='detectClique([j])'>".innerHTML;
+	text ="<table>";
+	for (var i = 0; i < lignes; i++) {
+		text += "<tr>";
+		for (var j = 0; j < colonnes; j++) {
+			text += '<td onclick="detecteClick('+j+')" id="'+i+'-'+j+'">';
+			
 			if (plateau[i][j] == 1) {
-				text = "<div class='joueur1'></div>".innerHTLM;
+				text += "<div class='joueur1'></div>";
 			}else if (plateau[i][j] == 2){
-				text = "<div class='joueur2'></div>".innerHTLM;
-			}else{
-
+				text += "<div class='joueur2'></div>";
 			}
-		text = "</td>".innerHTML;
-
+		text += "</td>";
 		}
-	text = "</tr>".innerHTLM;
+	text += "</tr>";
 	}
-text = "</table>";
-text = document.getElementById('puissance4');
+text += "</table>";
+	document.getElementById('puissance4').innerHTML = text;
 
 }
