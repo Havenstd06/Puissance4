@@ -48,5 +48,47 @@ function creerTableau(){
 	}
 text += "</table>";
 	document.getElementById('puissance4').innerHTML = text;
+}
 
+//2eme partie
+
+function detecteClick(j){
+	if (verifPosition(j) == true && jeu == true) {
+		var ligneEnCours = poseJeton(j); //Numéro de la ligne en cours
+		var verifEnd = puissance4(ligneEnCours , j , 0 , 0);
+		if (verifEnd) {
+			jeu = false;
+			afficheTextAnnonce(nomDuJoueur(numerojoueur) + " à gagner la partie");
+		}else{
+			if (numerojoueur == 1) {
+				numerojoueur = 2;
+			}else{
+				numerojoueur = 1;
+			}
+			afficheTextAnnonce("C'est au tour du joueur" + nomDuJoueur(numerojoueur));
+		}
+		}
+
+	}
+function verifPosition(j){	//Si la case de la colonne est vide ..
+	if (plateau[0][j] == 0) {
+		return true;
+	}else{					
+		return false;
+	}
+}
+function poseJeton(j){
+	for (var i = (lignes -1); lignes >= 0; i--) {
+		if (plateau[i][j] == 0) {
+			plateau[i][j] = numerojoueur; 
+			return [i];
+		}
+	}
+}
+function refreshTab(x,y,i){
+	document.getElementById(x+'-'+y).innerHTML += "<div>joueur "+i+" </div>" ;
+}
+function puissance4(lignes,colonnes,l,c){
+	console.log("valeurs:"+lignes+" "+colonnes+" / increment "+l+" "+c);
+	return false;
 }
