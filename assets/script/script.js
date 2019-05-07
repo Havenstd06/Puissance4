@@ -6,10 +6,5 @@ var text = "";
 var plateau = [];
 
 for (var i = 0; i < lignes.length; i++) {
-	var plateau[i];
-}
-
-
-function newGame(){
-	
+	plateau[i];
 }
