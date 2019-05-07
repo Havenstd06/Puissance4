@@ -65,7 +65,7 @@ function detecteClick(j){
 			}else{
 				numerojoueur = 1;
 			}
-			afficheTextAnnonce("C'est au tour du joueur" + nomDuJoueur(numerojoueur));
+			afficheTextAnnonce("C'est au tour du joueur " + nomDuJoueur(numerojoueur));
 		}
 		}
 
@@ -80,13 +80,14 @@ function verifPosition(j){	//Si la case de la colonne est vide ..
 function poseJeton(j){
 	for (var i = (lignes -1); lignes >= 0; i--) {
 		if (plateau[i][j] == 0) {
-			plateau[i][j] = numerojoueur; 
+			plateau[i][j] = numerojoueur;
+			 refreshTab(i,j,numerojoueur);
 			return [i];
 		}
 	}
 }
 function refreshTab(x,y,i){
-	document.getElementById(x+'-'+y).innerHTML += "<div>joueur "+i+" </div>" ;
+	document.getElementById(x+'-'+y).innerHTML = '<div class="joueur'+i+'"></div>' ;
 }
 function puissance4(lignes,colonnes,l,c){
 	console.log("valeurs:"+lignes+" "+colonnes+" / increment "+l+" "+c);
