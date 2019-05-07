@@ -11,12 +11,12 @@ for (var i = 0; i < lignes; i++) {
 newGame();
 function newGame(){
 	for (var i = 0; i < lignes; i++) {
-		for (var j = 0; i < colonnes; j++) {
+		for (var j = 0; j < colonnes; j++) {
 			plateau[i][j] = 0 ;
 		}
 	}
 	numerojoueur = 1;
-	afficheTextAnnonce("Le jeu commence , c'est au tour du joueur ")+ nomDuJoueur(joueur);
+	afficheTextAnnonce("Le jeu commence , c'est au tour du joueur ")+ nomDuJoueur(numerojoueur);
 	jeu = true;
 	creerTableau();
 }
