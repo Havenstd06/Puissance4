@@ -22,4 +22,10 @@ function newGame(){
 function afficheTextAnnonce(text){
 	document.GetElementById('textannonce').innerHTML;
 }
-
+function nomDuJoueur(numerojoueur){
+	if (numerojoueur == 1) {
+		return "rouge";
+	}else{
+		return "bleu";
+	}
+}
