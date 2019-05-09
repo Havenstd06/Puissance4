@@ -53,12 +53,13 @@ text += "</table>";
 //2eme partie
 
 function detecteClick(j){
-	if (verifPosition(j) == true && jeu == true) {
+	if (verifPosition(j) && this.jeu ) {
 		var ligneEnCours = poseJeton(j); //Numéro de la ligne en cours
 		var verifEnd = puissance4(ligneEnCours , j , 0 , 0);
 		if (verifEnd) {
 			jeu = false;
 			afficheTextAnnonce(nomDuJoueur(numerojoueur) + " à gagner la partie");
+			console.log("END OF GAME !!");
 		}else{
 			if (numerojoueur == 1) {
 				numerojoueur = 2;
@@ -77,11 +78,12 @@ function verifPosition(j){	//Si la case de la colonne est vide ..
 		return false;
 	}
 }
+//Vérifie et pose le jeton sur la ligne la plus en bas du tableau
 function poseJeton(j){
 	for (var i = (lignes -1); lignes >= 0; i--) {
 		if (plateau[i][j] == 0) {
 			plateau[i][j] = numerojoueur;
-			 refreshTab(i,j,numerojoueur);
+			refreshTab(i,j,numerojoueur);
 			return [i];
 		}
 	}
@@ -89,7 +91,36 @@ function poseJeton(j){
 function refreshTab(x,y,i){
 	document.getElementById(x+'-'+y).innerHTML = '<div class="joueur'+i+'"></div>' ;
 }
-function puissance4(lignes,colonnes,l,c){
-	console.log("valeurs:"+lignes+" "+colonnes+" / increment "+l+" "+c);
-	return false;
+function puissance4(lig,col,l,c){
+	if (c == 0 && l == 0) {
+		console.log("valeurs:"+lig+" "+col+" / increment "+l+" "+c);
+		// horizontal
+		var va = 1 + puissance4(lig, col-1, 0, -1) +puissance4(lig, col +1, 0, 1);
+
+		// vertical
+		var vb = 1 + puissance4(lig -1, col, -1, 0) +puissance4(lig +1, col, 1, 0);
+
+		// diag gauche
+		var vc = 1 + puissance4(lig -1, col-1, -1, -1) + puissance4(lig +1 , col +1 , 1 , 1);
+
+		//diag droite
+		var vd = 1 + puissance4(lig -1, col +1, -1, 1) +puissance4(lig +1, col -1, 1, -1);
+		console.log(va,vb,vc,vd);
+		if (va >= 4 || vb >= 4 || vc >= 4 || vd >= 4) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+if (lig < this.lignes && lig >=0 && col < this.colonnes && col >= 0) {
+	console.log("recu valeurs : " + lig +" "+col+" / Incrément "+l+" "+c);
+	if (this.plateau[lig][col] == this.numerojoueur) {
+		console.log("ok " + numerojoueur);
+		return 1 + puissance4(lig+l, col+c, l, c);
+	}else{
+		console.log("pas ok " + numerojoueur);
+		return 0;
+	}
+}
+return 0;
 }
