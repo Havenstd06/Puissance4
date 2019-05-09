@@ -58,7 +58,7 @@ function detecteClick(j){
 		var verifEnd = puissance4(ligneEnCours , j , 0 , 0);
 		if (verifEnd) {
 			jeu = false;
-			afficheTextAnnonce(nomDuJoueur(numerojoueur) + " à gagner la partie");
+			afficheTextAnnonce(nomDuJoueur(numerojoueur) + " a gagné la partie");
 			console.log("END OF GAME !!");
 		}else{
 			if (numerojoueur == 1) {
@@ -80,11 +80,11 @@ function verifPosition(j){	//Si la case de la colonne est vide ..
 }
 //Vérifie et pose le jeton sur la ligne la plus en bas du tableau
 function poseJeton(j){
-	for (var i = (lignes -1); lignes >= 0; i--) {
+	for (var i = (lignes -1); i >= 0; i--) {
 		if (plateau[i][j] == 0) {
 			plateau[i][j] = numerojoueur;
 			refreshTab(i,j,numerojoueur);
-			return [i];
+			return i;
 		}
 	}
 }
@@ -112,8 +112,8 @@ function puissance4(lig,col,l,c){
 			return false;
 		}
 	}
-if (lig < this.lignes && lig >=0 && col < this.colonnes && col >= 0) {
-	console.log("recu valeurs : " + lig +" "+col+" / Incrément "+l+" "+c);
+if (lig < this.lignes && lig >= 0 && col < this.colonnes && col >= 0) {
+	console.log("recu valeurs : "+lig+" "+col+" / Incrément "+l+" "+c);
 	if (this.plateau[lig][col] == this.numerojoueur) {
 		console.log("ok " + numerojoueur);
 		return 1 + puissance4(lig+l, col+c, l, c);
